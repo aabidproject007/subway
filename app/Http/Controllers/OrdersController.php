@@ -23,10 +23,17 @@ class OrdersController extends Controller
     public function add_view()
     {
 
-        $present = Menu::all();
+       $present = Menu::all();
        //dd($present);
-        return view('orders.add')->with('menu',$present);
 
+        $cust = Customer::all();
+
+       /* return view('orders.add')->with(['customer' ,$cust,'menu' ,$present]);*/
+        return view('orders.add')->with([
+            'customer' => $cust,
+            'menu' => $present
+
+        ]);
     }
     public function add(Request $request)
     {
@@ -75,6 +82,16 @@ class OrdersController extends Controller
             return \Response::json('No Data Available');
         }
 
+
+
+    }
+    public function delivery()
+    {
+
+       /* $order = Order::lists('id','name');*/
+        //$present = User::where([['role','!=',0],['role','!=',1]])->get();
+
+        return view('Deliveries.index');
 
 
     }

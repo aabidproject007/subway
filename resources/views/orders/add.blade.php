@@ -114,86 +114,17 @@
 
 
                                         <tbody>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Jhon Doe</td>
-                                            <td>jhon@gmail.com</td>
-                                            <td> <a href="#" class="btn btn-xs btn-success">Edit</a>
-                                            <a href="#" class="btn btn-xs btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                        {{-- @foreach ($menu as $menu)
+                                        @foreach ($customer as $customer)
 
                                              <tr>
-                                                 <td id="name-{{ $menu->id }}">{{ $menu->name }}</td>
-                                                 <td id="type-{{ $menu->id }}">{{ $menu->type }} </td>
-                                                 --}}{{--<td>{{ $menu->rate }}</td>--}}{{--
-
-                                                 <td>
-                                                     <a href="javscript:;" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modalEdit" onclick="myEdit({{$menu->id}})" ><i class="fa fa-pencil"></i> Edit</a>
-                                                     <a href="{{ route('menu_delete', ['id'=>$menu->id]) }}" id="delete" onclick="return confirm('are you sure ')"  class="btn btn-xs btn-danger"><i class="fa fa-trash"></i>Delete</a>
-
-                                                     --}}{{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
-
-                                                      <a href="{{ route('admin_edit_view', ['id'=>$menu->id]) }}" class="btn btn-xs btn-info">Edit</a>--}}{{--
-                                                     --}}{{--@if($user->status == 0)
-                                                         <a href="{{ route('admin_edit_status', ['id'=>$user->id,'status'=>1]) }}" class="btn btn-xs btn-success">Active</a>
-                                                     @else
-                                                         <a href="{{ route('admin_edit_status', ['id'=>$user->id,'status'=>0]) }}" class="btn btn-xs btn-danger">Deactive</a>
-                                                     @endif--}}{{--
-                                                 </td>
-                                             </tr>
+                                                 <td >{{ $customer->name }}</td>
+                                                 <td >{{ $customer->email }} </td>
+                                                 <td>test</td>
 
 
-                                         @endforeach--}}
+                                            </tr>
+
+                                         @endforeach
 
 
                                         </tbody>
@@ -201,10 +132,14 @@
                                 </div>
 </div>
 
+                                </div>
+                                <hr>
+
+                            </div>
 <div class="clearfix"></div>
 
                             <div class="row" id="placeorder" hidden>
-<div class="col-md-6 col-sm-12">
+                                <div class="col-md-6 col-sm-12">
     <span class="section">Privious Order Info</span>
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
@@ -306,19 +241,24 @@
 
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="order_test">
 
                                                     @foreach ($menu as $menu)
 
-                                     <trc >
-                                        <td> <input type="checkbox" name="select" class="order_chk" data-order="{{ $menu->name }}" data-type="{{ $menu->type }}" data-extra="" >
+                                     <tr >
+                                        <td> <input type="checkbox" name="select" class="order_chk" data-id="{{ $menu->id }}" data-order="{{ $menu->name }}" data-type="{{ $menu->type }}" data-extra="" value="menu-{{ $menu->id }}" >
                                         </td><td id="name-{{ $menu->id }}">{{ $menu->name }}</td>
                                          <td id="type-{{ $menu->id }}">{{ $menu->type }} </td>
 
-
+                                     </tr>
 
                                  @endforeach
-                                                    </trc>
+                                               {{--     <tr >
+                                                        <td> <input type="checkbox" name="select" class="order_chk" data-id="2" data-order="veg-biryani" data-type="veg" data-extra="" value="menu-2" >
+                                                        </td><td id="name-{{ $menu->id }}">veg-biryani</td>
+                                                        <td id="type-{{ $menu->id }}">veg</td>
+
+                                                    </tr>--}}
 
 
                                                     </tbody>
@@ -361,16 +301,6 @@
 
 
                                 <tbody id="menu_cnfrm">
-                                <tr>
-                                    <td>Chiken Biryani</td>
-                                    <td>Non-Veg</td>
-                                    <td><input type="text" id="qty_id" name="qty" > </td>
-                                    <td><input type="text" id="extra_id" name="extra" > </td>
-                                    <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Remove</button>
-                                    </td>
-                                </tr>
-
-
 
                                 </tbody>
                             </table>
@@ -537,25 +467,33 @@
             return confirm("Do you want to delete this item?");
         });
     </script>
-    <script> $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
             $(".order_chk ").click(function() {
                 if($(this).prop("checked") == true){
-                    alert($(this).data('type'));
-                    $("#menu_cnfrm").append("<tr> <td>"+$(this).data('order')+"</td><td>"+$(this).data('type')+"</td><td><input type='text' id='qty_id' name='qty'  > </td><td><input type='text' id='extra_id' name='extra' > </td>'#'<td> </td></tr>");
+
+                    $("#menu_cnfrm").append("<tr id="+$(this).data('id')+"> <td>"+$(this).data('order')+"</td><td>"+$(this).data('type')+"</td><td><input type='text' id='qty_id' name='qty'  > </td><td><input type='text' id='extra_id' name='extra' > </td><td> <a href='javascript:void(0);' class='remCF' id="+'menu-'+$(this).data('id')+" >Remove</a> <input type='checkbox' name='select' hidden value="+'menu-'+$(this).data('id')+" > </td></tr>");
 
                 } else {
-                    alert($(this).data('extra'));
-                    // if the checkbox is unchecked, remove the item from the ul.
+                    alert($(this).val() );
+                  $("#menu_cnfrm").find('input:checkbox[value="' + $(this).val() + '"]').closest('tr').remove();
 
                 }
+
             });
 
+            $("#menu_cnfrm").on('click','.remCF',function(){
+
+                $("#order_test").find('input:checkbox[value="' + this.id + '"]'). attr('checked', false);
+                $(this).parent().parent().remove();
 
 
+            });
 
         })
     </script>
+
     {{-- <script>
          $.validate({
              modules : 'date'
@@ -577,7 +515,7 @@
                     dataType: 'JSON',
                     data: {name: name, email: email, phone: phone, dob: dob, address: address,_token: '{{ csrf_token() }}'},
                     success: function( response ) {
-                        alert(response.cust_id);
+                       /* alert(response.cust_id);*/
 
                         $('#customer').hide();
                         $('#placeorder').show();
@@ -624,4 +562,5 @@
 
         });
     </script>
+
 @endsection

@@ -31,6 +31,7 @@ Route::group(['middleware'=>'auth'],function (){
     Route::post('/order/order_previous', 'OrdersController@previous')->name('order_previous');
     Route::post('/order/edit', 'OrdersController@edit')->name('order_edit');
     Route::get('/order_delete/{id}', 'OrdersController@delete')->name('order_delete');
+    Route::get('/delivery', 'OrdersController@delivery')->name('delivery_list');
 
 });
 

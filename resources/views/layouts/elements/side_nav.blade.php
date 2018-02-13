@@ -42,7 +42,7 @@
                     </li>
                     <li><a><i class="fa fa-truck"></i>Delivery  Management <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="general_elements.html">Delivery Record</a></li>
+                            <li><a href="{{route('delivery_list')}}">Delivery Record</a></li>
                             <li><a href="media_gallery.html">Delivery Assign</a></li>
                             <li><a href="typography.html">Delivery  Status</a></li>
 
